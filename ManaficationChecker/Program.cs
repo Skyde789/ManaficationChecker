@@ -8,7 +8,7 @@ namespace ManaficationChecker
     {
         static void Main(string[] args)
         {
-            bool userInput = false;
+            bool userInput = true;
             int input = 0;
 
             FightSimulator sim = new FightSimulator();
