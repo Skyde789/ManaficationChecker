@@ -29,6 +29,7 @@ namespace ManaficationChecker
             Console.Clear();
             int internalSeconds = manaficStart;
 
+            // Setup the two rotation sims
             Rotation onCD = new Rotation(killTimeSeconds);
             Rotation holdVariant = new Rotation(killTimeSeconds);
 
@@ -42,8 +43,12 @@ namespace ManaficationChecker
                     break;
             }
 
+            // Get how many holds can you do (if the kill time is 6:50 and last manafic was 6:00
+            // GetDeadTime would be 50 seconds of dead time. 
+            // Dividing that by 10, we get 5 possible holds. 
             int x = onCD.GetDeadTime() / 10;
 
+            // Run the hold version simulation
             if (x > 0)
             {
                 internalSeconds = manaficStart;
@@ -59,6 +64,8 @@ namespace ManaficationChecker
                 }
             }
 
+            // If the hold version has the same or more casts than onCD ALWAYS use hold instead
+            // This grants more dps
             if (holdVariant.GetManaficationCasts >= onCD.GetManaficationCasts)
             {
                 Console.WriteLine($"Kill time: {killTime}\nCasts: {holdVariant.GetManaficationCasts}\nHolds: {holdVariant.GetHoldAmount()}\nManafication casts:");

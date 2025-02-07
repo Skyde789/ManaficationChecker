@@ -17,7 +17,7 @@ namespace ManaficationChecker
             {
                 // Faster way than userinput
                 // input killtime and how many seconds in are you casting manafication
-                sim.StartSimulation("7:50", 8);
+                sim.StartSimulation("8:05", 8);
                 Environment.Exit(0);
             }
 

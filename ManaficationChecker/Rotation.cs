@@ -19,10 +19,16 @@ namespace ManaficationChecker
             m_iKillTime = killtime;
         }
         public int GetLastMeleeEndTime => manaficationMeleeEndTime.Count > 0 ? manaficationMeleeEndTime[^1] : 0;
+
+        /// <summary>
+        /// Gets dead time between killtime and last manaficationMeleeEndTime
+        /// </summary>
+        /// <returns></returns>
         public int GetDeadTime()
         {
             return m_iKillTime - manaficationMeleeEndTime[^1];
         }
+
         public void AddCast(int time)
         {
             manaficationCastTime.Add(time);
@@ -30,6 +36,8 @@ namespace ManaficationChecker
         }
 
         public int GetManaficationCasts => manaficationCastTime.Count;
+
+        // How many times did we hold our manafic for 120s
         public int GetHoldAmount()
         {
             int x = 0;
